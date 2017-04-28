@@ -1,0 +1,135 @@
+<html>
+
+<head>
+	<title>Assignment 2 Requirements</title>
+	<style>
+		body {
+			background-color: white;
+			font-family: Ariel, Helvetica, sans-serif;
+		}
+
+		pre {
+			font-family: Ariel, Helvetica, sans-serif;
+			font-size: 16pt;
+		}
+	</style>
+</head>
+
+<body>
+
+<h1>Assignment 2 Requirements</h1>
+
+<pre>
+
+GENERAL:
+
+- Create a Financial Transaction HTML form that allows a user to...
+
+  - Select either Income or Expense from a select-option list
+
+  - Enter an Item name for the transaction
+
+  - Select one of the following categories from a select-option list...
+  	 - Food, Gas, Paycheck, Rent, Stock
+
+  - Enter an Amount for the transaction
+
+  - Click a submit button to add a transaction
+
+- Display a list of the current known transactions
+  in a table below the HTML form.
+
+
+STRUCTURE:
+
+- The IncomeCategories interface defines constants
+   to represent the valid categories for Income transactions:  PayCheck, Stock
+
+- The IncomeCategories interface and lists a method definition, checkIncomeCategory,
+   that recieves the category as an arguement.
+
+ - The ExpenseCategories interface defines constants
+   to represent the valid categories for Expense transactions:  Rent, Food, Gas
+
+ - The ExpenseCategories interface and lists a method definition, checkExpenseCategory,
+   that recieves the category as an arguement.
+
+- The Transaction class...
+
+   ... is a the top of the inheritence chain.  It should not be allowed
+       to be instatianted by itself.
+
+  ... has the following instance variables:  item, category, and amount
+
+  ... has a  displayTrans() function which reads from the "transfile.txt"
+      file and displays the information stored in each line as a row
+      in an HTML tables.   The displayTrans() can be called directly
+      from the Transaction class
+
+      The transfile.txt file stores a  line of data as a delimited string in the
+      following format:  Income/Expense indicator, Item Name, Category, Amount
+      e.g (Income*Dividends*Stock*222*)
+
+  ... has a addTrans() function which appends a transaction to the transfile.txt
+      file in the delimited string format described above
+
+
+- The IncomeTran class will...
+
+   ...  inherit the Transaction class
+
+   ...  implement the IncomeCategories interface
+
+   ...  the checkIncomeCategory method will check the Income Category
+        selected by the user again the list of valid Income Catories defined
+        in the IncomeCategories interface
+
+
+ - The ExpenseTran class will...
+
+   ...  inherit the Transaction class
+
+   ...  implement the ExpenseCategories interface
+
+   ...  the checkExpenseCategory method will check the Income Category
+        selected by the user again the list of valid Expense Catories defined
+        in the ExpenseCategories interface
+
+
+
+PROCESSING:
+
+- The submit button, when clicked will recursively call the program and
+  do the following...
+
+	- Display the HTML form
+
+  	- Determine if this is the first time the HTML form
+  	  is displaying for the user to enter data and, if so,
+  	  display a list of the current known transactions
+  	  in a table below the HTML form and end the processing
+
+  	- If the user has entered data to be processed, do
+  	  the following...
+
+  	  ... If the user selected Income as the type of transaction
+  	      instantiate an IncomeTran object and check to see
+  	      if the Category selected is valid for an Income transaction
+
+  	  ... If the user selected Expense as the type of transaction
+  	      instantiate an ExpenseTran object and check to see
+  	      if the Category selected is valid for an Expense transaction
+
+  	- If the Category is valid for the Income/Expense type then
+  	   add the data as a line in the transfile.txt file.
+
+  	- Otherwise, display an Error Message
+
+    - Display a list of the current known transactions
+  	  in a table below the HTML form
+
+
+</pre>
+
+</body>
+</html>
